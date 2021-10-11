@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
 }
 
 <h1>Index</h1>
@@ -9,6 +10,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<style>
+    .trash {
+        color: red;
+    }
+</style>
+
 <table class="table">
     <thead>
         <tr>
@@ -28,9 +35,6 @@
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DOB)
             </th>
             <th>
@@ -39,60 +43,61 @@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Updateddate)
-            </th>           
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Designation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DOJ)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Updateddate)
-            </td>            
-           
-            <td>
-                <span>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary"})
-                    @Html.ActionLink("Details", "Details", new { id = item.ID })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </span>
-                
-            </td>
-            <td>
-                <span>
-                    @Html.ActionLink("Add Salary", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })                   
-                </span>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @item.DOB.ToShortDateString()
+                    @*@Html.DisplayFor(modelItem => item.DOB)*@
+                </td>
+                <td>
+                    @item.DOJ.ToShortDateString()
+                    @*@Html.DisplayFor(modelItem => item.DOJ)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+
+                <td>
+                    <span>
+                        @Html.ActionLink("", "Edit", new { id = item.ID }, new { @class = "fa fa-edit" })
+                        @Html.ActionLink("", "Details", new { id = item.ID }, new { @class = "fa fa-eye" })
+                        @Html.ActionLink("", "Delete", new { id = item.ID }, new { @class = "fa fa-trash trash" })
+                    </span>
+
+                </td>
+                <td>
+                    <span>
+                        @Html.ActionLink("Add", "AddSalary", new { id = item.ID, userType = item.UserType }, new {@class ="fas fa-dollar-sign"})
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        @Html.ActionLink("Edit", "EditSalary", new { id = item.ID, userType = item.UserType }, new { @class = "fas fa-dollar-sign" })
+                    </span>
+                </td>
+            </tr>
+
+        }
     </tbody>
 </table>
+

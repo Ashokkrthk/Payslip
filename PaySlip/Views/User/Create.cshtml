@@ -12,11 +12,11 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">                
+            <div class="form-group">
                 <label asp-for="Name" class="col-md-3 control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>           
+            </div>
             <div class="form-group">
                 <label asp-for="Department" class="control-label"></label>
                 <input asp-for="Department" class="form-control" />
@@ -31,37 +31,37 @@
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-            </div>           
+            </div>
         </div>
         <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Designation" class="control-label"></label>
-                    <input asp-for="Designation" class="form-control" />
-                    <span asp-validation-for="Designation" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DOB" class="control-label"></label>
-                    <input asp-for="DOB" class="form-control" />
-                    <span asp-validation-for="DOB" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DOJ" class="control-label"></label>
-                    <input asp-for="DOJ" class="form-control" />
-                    <span asp-validation-for="DOJ" class="text-danger"></span>
-                </div>
+            <div class="form-group">
+                <label asp-for="Designation" class="control-label"></label>
+                <input asp-for="Designation" class="form-control" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
             </div>
-    </div>    
+            <div class="form-group">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOJ" class="control-label"></label>
+                <input asp-for="DOJ" class="form-control" />
+                <span asp-validation-for="DOJ" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
 
-<h4>Bank Details</h4>
+    <h4>Bank Details</h4>
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
         <div class="col-md-6">
             @*<div class="form-group">
-                <label asp-for="Userid" class="col-md-3 control-label"></label>
-                <input asp-for="Userid" class="form-control" />
-                <span asp-validation-for="Userid" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="Userid" class="col-md-3 control-label"></label>
+                    <input asp-for="Userid" class="form-control" />
+                    <span asp-validation-for="Userid" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="Bank_Name" class="control-label"></label>
                 <input asp-for="Bank_Name" class="form-control" />
@@ -80,10 +80,10 @@
                 <span asp-validation-for="UAN_Number" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="IsActive" class="control-label"></label>
-                <input asp-for="IsActive" class="form-control" />
-                <span asp-validation-for="IsActive" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="IsActive" class="control-label"></label>
+                    <input asp-for="IsActive" class="form-control" />
+                    <span asp-validation-for="IsActive" class="text-danger"></span>
+                </div>*@
         </div>
     </div>
     <div class="form-group">
@@ -97,4 +97,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  
 }

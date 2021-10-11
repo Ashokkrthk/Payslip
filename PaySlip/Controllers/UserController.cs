@@ -32,14 +32,22 @@ namespace PaySlip.Controllers
         {
             //var user = _context.Users.SingleOrDefault(x => x.UserName == model.UserName && x.Password == model.Password);
             User userDetail = inputRequest.Login(model.UserName, model.Password);
-            if (userDetail.UserType == 1)
+            if(userDetail.ID > 0)
             {
-                return RedirectToAction("Index");
+                if (userDetail.UserType == 1)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {                   
+                    return View("UserDetail", userDetail);
+                }
             }
             else
             {
-                return View("UserDetail", userDetail);
-            }            
+                ViewBag.ErrorMessage = "Invalid Email or Password.";
+                return View();
+            }                      
         }
 
         public ActionResult Index()
@@ -88,6 +96,7 @@ namespace PaySlip.Controllers
         {
             if (ModelState.IsValid)
             {
+            
                 inputRequest.UpdateUser(userObj);
                 return RedirectToAction("Index", "User");
             }
@@ -99,27 +108,35 @@ namespace PaySlip.Controllers
         public ActionResult delete(int id)
         {
 
+
             inputRequest.DeleteUser(id);
             return RedirectToAction("Index", "User");
         }
 
         public ActionResult details(int id)
         {
-            User user = inputRequest.Users().Single(emp => emp.ID == id);
+            User user = inputRequest.Users().SingleOrDefault(emp => emp.ID == id);
             return View(user);
         }
 
 
         [HttpGet]
-        public ActionResult BankDetails(int id)
+        public ActionResult AddSalary(int id)
         {
-            return RedirectToAction("Create", "BankDetails", new { id = id });
+            //if()
+            return RedirectToAction("Create", "SalaryDetails", new { id = id });
         }
 
-
-        public ActionResult BankEdit(int id)
+        public ActionResult EditSalary(int id)
         {
-            return RedirectToAction("Edit", "BankDetails", new { id = id });
+            //if()
+            return RedirectToAction("Edit", "SalaryDetails", new { id = id });
+        }
+
+        public ActionResult ViewSalary(int id)
+        {
+            //if()
+            return RedirectToAction("ViewSalaryDetails", "SalaryDetails", new { id = id });
         }
 
     }

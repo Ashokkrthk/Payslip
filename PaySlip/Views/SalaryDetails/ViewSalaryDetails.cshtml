@@ -1,0 +1,145 @@
+﻿@model IEnumerable<BusinessLayer.DataModels.SalaryDetails>
+
+@{
+    ViewData["Title"] = "ViewSalaryDetails";
+}
+
+<h1>ViewSalaryDetails</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Userid)
+        </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseRent_Allowances)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conveyance_Allowances)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medical_Allowances)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Special_Allowances)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GrossSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProfessionalTax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDeductions)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NetPay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOPDays)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.PaidDays)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TotalWorkingDays)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+               @*@ <td>
+                    @Html.DisplayFor(modelItem => item.Userid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasicSalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HouseRent_Allowances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Conveyance_Allowances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medical_Allowances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Special_Allowances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrossSalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ESI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProfessionalTax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDeductions)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetPay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOPDays)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.PaidDays)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalWorkingDays)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Month)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>*@
+                <td>
+                    <span>
+                        @Html.ActionLink("View", "ViewSalary", new { id = item.ID, userId = item.Userid }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Generate PaySlip", "CreatePDF", "PdfCreator", new { userId = item.Userid, month = item.Month, year = item.Year, salaryId = item.ID }, new { @class = "btn btn-success" })
+                    </span>
+                </td>
+
+            </tr>
+            <tr>
+              
+            </tr>
+        }
+    </tbody>
+</table>
+   
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -4,7 +4,7 @@
     ViewData["Title"] = "User Detail";
 }
 
-<h2>Create</h2>
+<h3>Details</h3>
 
 <h4>User</h4>
 
@@ -13,23 +13,18 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label asp-for="ID" class="col-md-3 control-label"></label>
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Name" class="col-md-3 control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" disabled />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Department" class="col-md-3 control-label"></label>
-                <input asp-for="Department" class="form-control" />
+                <input asp-for="Department" class="form-control" disabled />
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Designation" class="col-md-3 control-label"></label>
-                <input asp-for="Designation" class="form-control" />
+                <input asp-for="Designation" class="form-control" disabled />
                 <span asp-validation-for="Designation" class="text-danger"></span>
             </div>
 
@@ -37,17 +32,47 @@
         <div class="col-6">
             <div class="form-group">
                 <label asp-for="UserName" class="col-md-3 control-label"></label>
-                <input asp-for="UserName" class="form-control" />
+                <input asp-for="UserName" class="form-control" disabled />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DOB" class="col-md-3 control-label"></label>
-                <input asp-for="DOB" class="form-control" />
+                <input asp-for="DOB" class="form-control" disabled />
                 <span asp-validation-for="DOB" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DOJ" class="col-md-3 control-label"></label>
-                <input asp-for="DOJ" class="form-control" />
+                <input asp-for="DOJ" class="form-control" disabled />
                 <span asp-validation-for="DOJ" class="text-danger"></span>
             </div>
-</form>
+        </div>
+    </div>
+ </form>
+
+    <h4>Bank Details</h4>
+
+    <form asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="Bank_Name" class="col-md-3 control-label"></label>
+                    <input asp-for="Bank_Name" class="form-control"  />
+                    <span asp-validation-for="Bank_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Account_Number" class="col-md-3 control-label"></label>
+                    <input asp-for="Account_Number" class="form-control"  />
+                    <span asp-validation-for="Account_Number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UAN_Number" class="col-md-3 control-label"></label>
+                    <input asp-for="UAN_Number" class="form-control"  />
+                    <span asp-validation-for="UAN_Number" class="text-danger"></span>
+                </div>
+            </div>
+            </div>
+                <div class="form-group">
+                    @Html.ActionLink("View Salary", "ViewSalary", new { id = Model.ID }, new { @class = "btn btn-primary" })
+                </div>
+    </form>

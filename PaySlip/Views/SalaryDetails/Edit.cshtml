@@ -1,0 +1,176 @@
+﻿@model BusinessLayer.DataModels.SalaryDetails
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SalaryDetails</h4>
+<hr />
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Month" class="control-label"></label>
+                <input asp-for="Month" type="text" name="datepicker" id="datepicker" class="form-control" />
+                <span asp-validation-for="Month" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="BasicSalary" class="control-label"></label>
+                <input asp-for="BasicSalary" class="form-control" />
+                <span asp-validation-for="BasicSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HouseRent_Allowances" class="control-label"></label>
+                <input asp-for="HouseRent_Allowances" class="form-control" />
+                <span asp-validation-for="HouseRent_Allowances" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conveyance_Allowances" class="control-label"></label>
+                <input asp-for="Conveyance_Allowances" class="form-control" />
+                <span asp-validation-for="Conveyance_Allowances" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medical_Allowances" class="control-label"></label>
+                <input asp-for="Medical_Allowances" class="form-control" />
+                <span asp-validation-for="Medical_Allowances" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Special_Allowances" class="control-label"></label>
+                <input asp-for="Special_Allowances" class="form-control" />
+                <span asp-validation-for="Special_Allowances" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GrossSalary" class="control-label"></label>
+                <input asp-for="GrossSalary" class="form-control" />
+                <span asp-validation-for="GrossSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EPF" class="control-label"></label>
+                <input asp-for="EPF" class="form-control" />
+                <span asp-validation-for="EPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ESI" class="control-label"></label>
+                <input asp-for="ESI" class="form-control" />
+                <span asp-validation-for="ESI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfessionalTax" class="control-label"></label>
+                <input asp-for="ProfessionalTax" class="form-control" />
+                <span asp-validation-for="ProfessionalTax" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="TotalDeductions" class="control-label"></label>
+                <input asp-for="TotalDeductions" class="form-control" />
+                <span asp-validation-for="TotalDeductions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LOPDays" class="control-label"></label>
+                <input asp-for="LOPDays" class="form-control" />
+                <span asp-validation-for="LOPDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaidDays" class="control-label"></label>
+                <input asp-for="PaidDays" class="form-control" />
+                <span asp-validation-for="PaidDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalWorkingDays" class="control-label"></label>
+                <input asp-for="TotalWorkingDays" class="form-control" />
+                <span asp-validation-for="TotalWorkingDays" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NetPay" class="control-label"></label>
+                <input asp-for="NetPay" class="form-control" />
+                <span asp-validation-for="NetPay" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+
+        function calculateGrossPay() {
+            debugger;
+            var basicsalary = parseInt($('#BasicSalary').val());
+            var houseRentAllowances = parseFloat($('#HouseRent_Allowances').val());
+            var conveyanceAllowances = parseFloat($('#Conveyance_Allowances').val());
+            var medicalAllowances = parseFloat($('#Medical_Allowances').val());
+            var specialAllowances = parseFloat($('#Special_Allowances').val());
+
+            var grossPay = basicsalary + houseRentAllowances + conveyanceAllowances + medicalAllowances + specialAllowances;
+
+            $('#GrossSalary').val(grossPay);
+            calculateNetPay()
+        }
+        function calculateTotalDeductions() {
+            debugger;
+            var epf = parseFloat($('#EPF').val());
+            var esi = parseFloat($('#ESI').val());
+            var tax = parseFloat($('#ProfessionalTax').val());
+
+
+            var totalDeductions = epf + esi + tax;
+
+            $('#TotalDeductions').val(totalDeductions);
+            calculateNetPay()
+        }
+
+        function calculateNetPay() {
+            debugger;
+            var gross = parseFloat($('#GrossSalary').val());
+            var deductions = parseFloat($('#TotalDeductions').val());
+
+            var netPay = gross - deductions;
+
+            $('#NetPay').val(netPay);
+        }
+        $("#datepicker").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+
+    </script>
+
+}
+
+
+

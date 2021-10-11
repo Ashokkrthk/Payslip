@@ -31,15 +31,18 @@ namespace PaySlip.Controllers
             //UserBusinessLayer layer = new UserBusinessLayer();
             //List<User> list = UserBusinessLayer.Users.ToList();
             //return View(list);
-
-            List<SalaryDetails> list = inputRequest.Details();
-            return View(list);
+            return RedirectToAction("Index", "User");
+            //List<SalaryDetails> list = inputRequest.Details();
+            //return View(list);
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-
-            return View();
+            var salryObj = new SalaryDetails();
+            salryObj.Userid = id;
+            salryObj.Conveyance_Allowances = 1600;
+            salryObj.Medical_Allowances = 1250;
+            return View(salryObj);
         }
         [HttpPost]
         public ActionResult Create(SalaryDetails salaryObj)
@@ -47,15 +50,36 @@ namespace PaySlip.Controllers
             if (ModelState.IsValid)
             {
                 inputRequest.AddSalaryDetails(salaryObj);
-                return RedirectToAction("Index", "salary");
+                return RedirectToAction("Index", "User");
             }
             return View();
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int userType = 0)
         {
-            SalaryDetails salary = inputRequest.Details().Single(emp => emp.ID == id);
-
+            SalaryDetails salary = inputRequest.Details().Where(emp => emp.Userid == id).FirstOrDefault();
+            
+                return View(salary);
+            
+            
+        }
+        public ActionResult ViewSalary(int id, int userId)
+        {
+            SalaryDetails salary = inputRequest.Details().Where(emp => emp.Userid == userId && emp.ID == id).ToList().FirstOrDefault();
+            if (salary == null)
+            {
+                // Throw File notfound
+            }
+            return View(salary);
+            
+        }
+        public ActionResult ViewSalaryDetails(int id)
+        {
+            List<SalaryDetails> salary = inputRequest.Details().Where(emp => emp.Userid == id).ToList();
+            if (salary == null)
+            {
+                // Throw File notfound
+            }
             return View(salary);
         }
         [HttpPost]
@@ -65,6 +89,16 @@ namespace PaySlip.Controllers
             {
                 inputRequest.UpdateSalaryDetails(salaryObj);
                 return RedirectToAction("Index", "SalaryDetails");
+            }
+            return View();
+        }
+
+        public ActionResult GeneratePayslip(int Id, int userId)
+        {
+            if (ModelState.IsValid)
+            {
+                var payslip = inputRequest.GeneratePayslip(Id, userId, 0, 0);
+                return View(payslip.FirstOrDefault());
             }
             return View();
         }
