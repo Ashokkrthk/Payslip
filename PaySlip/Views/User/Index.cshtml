@@ -19,83 +19,85 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th style="width:5%;">
                 @Html.DisplayNameFor(model => model.ID)
             </th>
-            <th>
+            <th style="width:8%;">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th style="width:8%;">
                 @Html.DisplayNameFor(model => model.Designation)
             </th>
-            <th>
+            <th style="width:8%;">
                 @Html.DisplayNameFor(model => model.Department)
             </th>
-            <th>
+            <th style="width: 8%;">
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th>
+            <th style="width: 8%;">
                 @Html.DisplayNameFor(model => model.DOB)
             </th>
-            <th>
+            <th style="width: 8%;">
                 @Html.DisplayNameFor(model => model.DOJ)
             </th>
-            <th>
+            <th style="width:12%;">
                 @Html.DisplayNameFor(model => model.CreatedDate)
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Designation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @item.DOB.ToShortDateString()
-                    @*@Html.DisplayFor(modelItem => item.DOB)*@
-                </td>
-                <td>
-                    @item.DOJ.ToShortDateString()
-                    @*@Html.DisplayFor(modelItem => item.DOJ)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @item.DOB.ToShortDateString()
+                @*@Html.DisplayFor(modelItem => item.DOB)*@
+            </td>
+            <td>
+                @item.DOJ.ToShortDateString()
+                @*@Html.DisplayFor(modelItem => item.DOJ)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
 
-                <td>
-                    <span>
-                        @Html.ActionLink("", "Edit", new { id = item.ID }, new { @class = "fa fa-edit" })
-                        @Html.ActionLink("", "Details", new { id = item.ID }, new { @class = "fa fa-eye" })
-                        @Html.ActionLink("", "Delete", new { id = item.ID }, new { @class = "fa fa-trash trash" })
-                    </span>
+            <td style="width: 6%;">
+                <span>
+                    @Html.ActionLink("", "Edit", new { id = item.ID }, new { @class = "fa fa-edit" })
+                    @Html.ActionLink("", "Details", new { id = item.ID }, new { @class = "fa fa-eye" })
+                    @Html.ActionLink("", "Delete", new { id = item.ID }, new { @class = "fa fa-trash trash" })
+                </span>
 
                 </td>
-                <td>
-                    <span>
-                        @Html.ActionLink("Add", "AddSalary", new { id = item.ID, userType = item.UserType }, new {@class ="fas fa-dollar-sign"})
-                    </span>
-                </td>
-                <td>
-                    <span>
-                        @Html.ActionLink("Edit", "EditSalary", new { id = item.ID, userType = item.UserType }, new { @class = "fas fa-dollar-sign" })
-                    </span>
-                </td>
-            </tr>
+            <td style="width: 8%;">
+                <span>
+                    @Html.ActionLink("Add Salary", "AddSalary", new { id = item.ID, userType = item.UserType }, new { @class = "fas fa-dollar-sign", style="font-size:20px;" })
+                </span>
+            </td>
+            <td>
+                <span>
+                    @Html.ActionLink("Edit Salary", "EditSalary", new { id = item.ID, userType = item.UserType }, new { @class = "fas fa-dollar-sign", style ="font-size:20px;" })
+                </span>
+            </td>
+        </tr>
 
         }
     </tbody>

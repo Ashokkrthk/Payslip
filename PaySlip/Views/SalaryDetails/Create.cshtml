@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="GrossSalary" class="control-label"></label>
-                <input asp-for="GrossSalary" class="form-control" />
+                <input asp-for="GrossSalary" class="form-control" readonly/>
                 <span asp-validation-for="GrossSalary" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -69,7 +69,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProfessionalTax" class="control-label"></label>
-                <input asp-for="ProfessionalTax" class="form-control" onkeypress="calculateTotalDeductions()" />
+                <input asp-for="ProfessionalTax" class="form-control" onfocus="calculateTotalDeductions()" />
                 <span asp-validation-for="ProfessionalTax" class="text-danger"></span>
             </div>
         </div>
@@ -92,7 +92,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TotalWorkingDays" class="control-label"></label>
-                <input asp-for="TotalWorkingDays" class="form-control" />
+                <input asp-for="TotalWorkingDays" class="form-control" onfocusout="calculateLOP()"/>
                 <span asp-validation-for="TotalWorkingDays" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -141,16 +141,17 @@
             $('#GrossSalary').val(grossPay);
             calculateNetPay()
         }
+
         function calculateTotalDeductions() {
             debugger;
             var epf = parseFloat($('#EPF').val());
             var esi = parseFloat($('#ESI').val());
             var tax = parseFloat($('#ProfessionalTax').val());
 
-
             var totalDeductions = epf + esi + tax;
-
             $('#TotalDeductions').val(totalDeductions);
+            //var gross = parseFloat($('#GrossSalary').val());
+            //var netPay = gross - totalDeductions;
             calculateNetPay()
         }
 
@@ -162,7 +163,23 @@
             var netPay = gross - deductions;
 
             $('#NetPay').val(netPay);
+            calculateLOP()
         }
+
+        function calculateLOP() {
+            debugger;
+            var grossSalary = parseFloat($('#GrossSalary').val());
+            var workingDays = parseFloat($('#TotalWorkingDays').val());
+            var lopDays = parseFloat($('#LOPDays').val());
+            var netPay = parseFloat($('#NetPay').val());
+
+            var lop = (netPay) - ((grossSalary / workingDays) * lopDays);
+            //var lop = 50000;
+            var lopInt = parseInt(lop);
+
+            $('#NetPay').val(lopInt);
+        }
+
         $("#datepicker").datepicker({
             format: "mm-yyyy",
             startView: "months",

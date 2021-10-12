@@ -48,6 +48,8 @@ namespace BusinessLayer
                     detail.PaidDays = Convert.ToInt32(dr["PaidDays"]);
                     detail.TotalDeductions = Convert.ToInt32(dr["TotalDeductions"]);
                     detail.Userid = Convert.ToInt32(dr["Userid"]);
+                    detail.Month = Convert.ToInt32(dr["Month"]);
+                    detail.Year = Convert.ToInt32(dr["Year"]);
                     details.Add(detail);
 
                 }
@@ -58,28 +60,32 @@ namespace BusinessLayer
         {
             try
             {
-
+                salaryObj = CalculateNetPay(salaryObj);
                 using SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spCreateSalary", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;                
                 cmd.Parameters.AddWithValue("@BasicSalary", salaryObj.BasicSalary);
                 cmd.Parameters.AddWithValue("@HouseRent_Allowances", salaryObj.HouseRent_Allowances);
                 cmd.Parameters.AddWithValue("@Conveyance_Allowances", salaryObj.Conveyance_Allowances);
                 cmd.Parameters.AddWithValue("@Medical_Allowances", salaryObj.Medical_Allowances);
                 cmd.Parameters.AddWithValue("@Special_Allowances", salaryObj.Special_Allowances);
-                salaryObj.GrossSalary = Convert.ToDecimal(salaryObj.BasicSalary) + salaryObj.HouseRent_Allowances + salaryObj.Conveyance_Allowances + salaryObj.Medical_Allowances + salaryObj.Special_Allowances;
+                //salaryObj.GrossSalary = Convert.ToDecimal(salaryObj.BasicSalary + salaryObj.HouseRent_Allowances + salaryObj.Conveyance_Allowances + salaryObj.Medical_Allowances + salaryObj.Special_Allowances);
                 cmd.Parameters.AddWithValue("@GrossSalary", salaryObj.GrossSalary);
                 cmd.Parameters.AddWithValue("@EPF", salaryObj.EPF);
                 cmd.Parameters.AddWithValue("@ESI", salaryObj.ESI);
                 cmd.Parameters.AddWithValue("@ProfessionalTax", salaryObj.ProfessionalTax);
-                salaryObj.TotalDeductions = salaryObj.EPF + salaryObj.ESI + salaryObj.ProfessionalTax;
+                //salaryObj.TotalDeductions = salaryObj.EPF + salaryObj.ESI + salaryObj.ProfessionalTax;
                 cmd.Parameters.AddWithValue("@TotalDeductions", salaryObj.TotalDeductions);
-                salaryObj.NetPay = Convert.ToInt64(salaryObj.GrossSalary - salaryObj.TotalDeductions);
+                //salaryObj.NetPay = Convert.ToInt64(salaryObj.GrossSalary - salaryObj.TotalDeductions);
                 cmd.Parameters.AddWithValue("@NetPay", salaryObj.NetPay);
                 cmd.Parameters.AddWithValue("@LOPDays", salaryObj.LOPDays);
                 cmd.Parameters.AddWithValue("@PaidDays", salaryObj.PaidDays);
                 cmd.Parameters.AddWithValue("@TotalWorkingDays", salaryObj.TotalWorkingDays);
+                cmd.Parameters.AddWithValue("@Userid", salaryObj.Userid);
+                cmd.Parameters.AddWithValue("@Month", DateTime.Now.Month);
+                cmd.Parameters.AddWithValue("@Year", DateTime.Now.Year);
+
                 cmd.ExecuteNonQuery();
             }
 
@@ -92,7 +98,7 @@ namespace BusinessLayer
         {
             try
             {
-
+                salaryObj = CalculateNetPay(salaryObj);
                 using SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spUpdateSalary", con);
@@ -102,16 +108,20 @@ namespace BusinessLayer
                 cmd.Parameters.AddWithValue("@Conveyance_Allowances", salaryObj.Conveyance_Allowances);
                 cmd.Parameters.AddWithValue("@Medical_Allowances", salaryObj.Medical_Allowances);
                 cmd.Parameters.AddWithValue("@Special_Allowances", salaryObj.Special_Allowances);
-               
+                //salaryObj.GrossSalary = Convert.ToDecimal(salaryObj.BasicSalary + salaryObj.HouseRent_Allowances + salaryObj.Conveyance_Allowances + salaryObj.Medical_Allowances + salaryObj.Special_Allowances);
                 cmd.Parameters.AddWithValue("@GrossSalary", salaryObj.GrossSalary);
                 cmd.Parameters.AddWithValue("@EPF", salaryObj.EPF);
                 cmd.Parameters.AddWithValue("@ESI", salaryObj.ESI);
                 cmd.Parameters.AddWithValue("@ProfessionalTax", salaryObj.ProfessionalTax);
+                //salaryObj.TotalDeductions = salaryObj.EPF + salaryObj.ESI + salaryObj.ProfessionalTax;
                 cmd.Parameters.AddWithValue("@TotalDeductions", salaryObj.TotalDeductions);
-                
+                //salaryObj.NetPay = Convert.ToInt64(salaryObj.GrossSalary - salaryObj.TotalDeductions);
                 cmd.Parameters.AddWithValue("@LOPDays", salaryObj.LOPDays);
                 cmd.Parameters.AddWithValue("@PaidDays", salaryObj.PaidDays);
                 cmd.Parameters.AddWithValue("@TotalWorkingDays", salaryObj.TotalWorkingDays);
+                cmd.Parameters.AddWithValue("@Userid", salaryObj.Userid);
+                cmd.Parameters.AddWithValue("@Month", DateTime.Now.Month);
+                cmd.Parameters.AddWithValue("@Year", DateTime.Now.Year);
 
                 cmd.ExecuteNonQuery();
             }
@@ -121,11 +131,15 @@ namespace BusinessLayer
             }
 
         }
-        private void CalculateSalaryDetails(SalaryDetails salaryObj)
+        private SalaryDetails CalculateNetPay(SalaryDetails salaryObj)
         {            
             salaryObj.GrossSalary = Convert.ToDecimal(salaryObj.BasicSalary + salaryObj.HouseRent_Allowances + salaryObj.Conveyance_Allowances + salaryObj.Medical_Allowances + salaryObj.Special_Allowances);
             salaryObj.TotalDeductions = salaryObj.EPF + salaryObj.ESI + salaryObj.ProfessionalTax;
             salaryObj.NetPay = Convert.ToInt64(salaryObj.GrossSalary - salaryObj.TotalDeductions);
+
+            salaryObj.NetPay = Convert.ToInt64(salaryObj.NetPay - ((salaryObj.GrossSalary / salaryObj.TotalWorkingDays) * salaryObj.LOPDays));
+
+            return salaryObj;
         }
         public PaySlip GeneratePaySlip(int salaryId, int userId, int month, int year)
         {

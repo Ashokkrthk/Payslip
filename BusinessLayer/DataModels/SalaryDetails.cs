@@ -24,8 +24,8 @@ namespace BusinessLayer.DataModels
         public int PaidDays { get; set; }
         public int TotalWorkingDays { get; set; }
         public int Userid { get; set; }
-        public DateTime Month { get; set; }
-        public DateTime Year { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
 
     }
 }
