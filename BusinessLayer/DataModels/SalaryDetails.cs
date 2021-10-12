@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.DataModels
 {
-   public class SalaryDetails
+   public class SalaryDetails 
     {
         public int ID { get; set; }
         public long BasicSalary { get; set; }
@@ -23,7 +23,9 @@ namespace BusinessLayer.DataModels
         public int LOPDays { get; set; }
         public int PaidDays { get; set; }
         public int TotalWorkingDays { get; set; }
-
+        public int Userid { get; set; }
+        public DateTime Month { get; set; }
+        public DateTime Year { get; set; }
 
     }
 }
