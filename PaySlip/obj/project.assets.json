@@ -3385,7 +3385,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "DinkToPdf": "1.0.8",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
@@ -10408,11 +10407,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\PaySlip\\PaySlip\\PaySlip.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\PaySlip\\PaySlip.csproj",
       "projectName": "PaySlip",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\PaySlip\\PaySlip\\PaySlip.csproj",
+      "projectPath": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\PaySlip\\PaySlip.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\source\\repos\\PaySlip\\PaySlip\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\PaySlip\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10432,8 +10431,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj"
             }
           }
         }

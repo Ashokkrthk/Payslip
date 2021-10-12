@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj": {}
+    "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj": {
+    "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\PaySlip\\BusinessLayer\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\docs\\.NET Core\\Payslip\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -2589,6 +2589,7 @@
       },
       "BusinessLayer/1.0.0": {
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {

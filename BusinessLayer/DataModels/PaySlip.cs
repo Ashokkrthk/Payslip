@@ -17,8 +17,5 @@ namespace BusinessLayer.DataModels
         public string Bank_Name { get; set; }
         public string Account_Number { get; set; }
         public string UAN_Number { get; set; }     
-       
-        
-
     }
 }

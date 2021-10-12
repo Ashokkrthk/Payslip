@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace PaySlip.Controllers
 {
     public class PdfCreatorController : Controller
@@ -27,14 +28,9 @@ namespace PaySlip.Controllers
         [HttpGet]
         public IActionResult CreatePDF(int userId, int month, int year, int salaryId)
         {
-            SalaryBusinessLayer salaryBusiness = new SalaryBusinessLayer(configuration.GetConnectionString("ISODataBaseConnection"));
-
-            //SalaryDetails salary = salaryBusiness.Details().Where(emp => emp.Userid == userId && emp.Month == month && emp.Year == year).FirstOrDefault();
-            var payslip = salaryBusiness.GeneratePayslip(salaryId, userId, month, year);
-            //UserBusinessLayer userBusiness = new UserBusinessLayer();
-
-            //User user = userBusiness.Users().SingleOrDefault(emp => emp.ID == id);
-
+            SalaryBusinessLayer salaryBusiness = new SalaryBusinessLayer(configuration.GetConnectionString("ISODataBaseConnection"));            
+            var payslip = salaryBusiness.GeneratePaySlip(salaryId, userId, month, year);
+           
             var globalSettings = new GlobalSettings
             {
                 ColorMode = ColorMode.Color,
@@ -48,7 +44,7 @@ namespace PaySlip.Controllers
             var objectSettings = new ObjectSettings
             {
                 PagesCount = true,
-                HtmlContent = TemplateGenerator.GetHTMLString(payslip.FirstOrDefault()),
+                HtmlContent = TemplateGenerator.GetHTMLString(payslip),
                 WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "styles.css") },                
                 HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]", Line = true },
                 FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }

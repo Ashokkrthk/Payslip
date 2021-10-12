@@ -10,3 +10,15 @@ C:\Users\Admin\source\repos\PaySlip\BusinessLayer\obj\Debug\net5.0\BusinessLayer
 C:\Users\Admin\source\repos\PaySlip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.dll
 C:\Users\Admin\source\repos\PaySlip\BusinessLayer\obj\Debug\net5.0\ref\BusinessLayer.dll
 C:\Users\Admin\source\repos\PaySlip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.pdb
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\bin\Debug\net5.0\BusinessLayer.deps.json
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\bin\Debug\net5.0\BusinessLayer.dll
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\bin\Debug\net5.0\ref\BusinessLayer.dll
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\bin\Debug\net5.0\BusinessLayer.pdb
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.AssemblyInfo.cs
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.dll
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\ref\BusinessLayer.dll
+C:\Users\Admin\docs\.NET Core\Payslip\BusinessLayer\obj\Debug\net5.0\BusinessLayer.pdb

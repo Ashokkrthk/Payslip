@@ -97,7 +97,8 @@ namespace PaySlip.Controllers
         {
             if (ModelState.IsValid)
             {
-                var payslip = inputRequest.GeneratePayslip(Id, userId, 0, 0);
+                //var payslip = inputRequest.GeneratePayslip(Id, userId, 0, 0);
+                var payslip = new List<BusinessLayer.DataModels.PaySlip>();
                 return View(payslip.FirstOrDefault());
             }
             return View();
